@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conso - Your Virtual AI Consultant</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="login_css.css">
+
+    <style>
+        .gradient-hover {
+            background-size: 200% auto;
+            transition: background-position 1s ease, color 0.5s ease;
+        }
+
+        .gradient-hover:hover {
+            background-position: right center;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<!-- <body class="bg-gradient-to-r from-purple-500 to-blue-500 min-h-screen flex items-center justify-center"> -->
+<body class="bg-custom-gradient min-h-screen flex items-center justify-center">
+    <div class="container flex items-center justify-between w-10/12 mx-auto">
+        <!-- Left Section -->
+        <div class="text-left text-white space-y-6 w-1/4">
+            <h1 class="text-5xl font-bold gradient-hover bg-gradient-to-r from-red-400 via-pink-500 to-purple-400 rounded-l-lg" 
+                data-aos="fade-in" data-aos-duration="2000">
+                Welcome to Conso
+            </h1>
+            <h2 class="text-2xl font-awesome gradient-hover bg-gradient-to-r from-indigo-400 to-purple-600 rounded-l-lg"
+                data-aos="slide-up" data-aos-duration="1500" data-aos-delay="500">
+                Your Personal AI Consultant
+            </h2>
+        </div>
+
+        <!-- Right Section (Login Form) -->
+        <div class="screen w-1/2">
+            <div class="screen__content">
+                <form id="loginForm" class="login">
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" id="emailInput" class="login__input" placeholder="User name / Email" required>
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" id="passwordInput" class="login__input" placeholder="Password" required>
+                    </div>
+                    <div id="errorMessage" class="error-message"></div>
+                    <button type="submit" class="button login__submit">
+                        <span class="button__text">Log In Now</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>				
+                </form>
+                <div class="social-login">
+                    <h3>Log in via</h3>
+                    <div class="social-icons">
+                        <a href="#" id="googleLogin" class="social-login__icon fab fa-google" title="Google Login"></a>
+                        <a href="#" id="phoneLogin" class="social-login__icon fas fa-phone-alt" title="Phone Login"></a>
+                        <a href="#" class="social-login__icon fab fa-instagram"></a>
+                        <a href="#" class="social-login__icon fab fa-facebook"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>		
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            GoogleAuthProvider, 
+            signInWithPopup,
+            RecaptchaVerifier,
+            signInWithPhoneNumber,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCabfhnLkCueVgVQJswGHjf6Ss79-7AEf0",
+            authDomain: "taio-2209.firebaseapp.com",
+            databaseURL: "https://taio-2209.firebaseio.com",
+            projectId: "taio-2209",
+            storageBucket: "taio-2209.appspot.com",
+            messagingSenderId: "854095992752",
+            appId: "1:854095992752:web:04900a75a368a73f392875"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Get DOM elements
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('emailInput');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorMessage = document.getElementById('errorMessage');
+        const googleLoginBtn = document.getElementById('googleLogin');
+        const phoneLoginBtn = document.getElementById('phoneLogin');
+
+        // Check auth state on page load
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, redirect to dashboard
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Email/Password Login
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in successfully
+                    const user = userCredential.user;
+                    console.log('User logged in:', user);
+                    // Redirect to dashboard
+                    window.location.href = 'index.html';
+                })
+                .catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMsg = error.message;
+                    errorMessage.textContent = errorMsg;
+                });
+        });
+
+        // Google Login
+        googleLoginBtn.addEventListener('click', () => {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // Google sign-in successful
+                    const user = result.user;
+                    console.log('Google user logged in:', user);
+                    // Redirect to dashboard
+                    window.location.href = 'index.html';
+                })
+                .catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMsg = error.message;
+                    errorMessage.textContent = errorMsg;
+                });
+        });
+
+        // Phone Login (basic setup, requires additional configuration)
+        phoneLoginBtn.addEventListener('click', () => {
+            const phoneNumber = prompt('Enter your phone number (with counindex code):');
+            if (phoneNumber) {
+                const recaptchaVerifier = new RecaptchaVerifier(auth, 'phoneLogin', {
+                    'size': 'invisible'
+                });
+
+                signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier)
+                    .then((confirmationResult) => {
+                        // SMS sent. Prompt user to enter verification code
+                        const verificationCode = prompt('Enter the verification code');
+                        return confirmationResult.confirm(verificationCode);
+                    })
+                    .then((result) => {
+                        // User signed in successfully
+                        const user = result.user;
+                        console.log('Phone user logged in:', user);
+                        // Redirect to dashboard
+                        window.location.href = 'index.html';
+                    })
+                    .catch((error) => {
+                        // Handle Errors here.
+                        const errorCode = error.code;
+                        const errorMsg = error.message;
+                        errorMessage.textContent = errorMsg;
+                    });
+            }
+        });
+    </script>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 300,
+            once: true,
+            easing: 'ease-in-out'
+        });
+    </script>
+    <script>
+    // tailwind.config.js
+    module.exports = {
+      theme: {
+        extend: {
+          backgroundImage: {
+            'custom-gradient': 'linear-gradient(to right, #b993d6, #8ca6db)',
+          }
+        }
+      }
+    }
+    </script>
+</body>
+</html>

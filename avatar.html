@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet RAJ - Your AI Consultant | Conso</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+        }
+        .avatar-gradient {
+            background: linear-gradient(180deg, #3B82F6 0%, #8B5CF6 100%);
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .chat-bubble {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 10px #4158D0; }
+            to { box-shadow: 0 0 20px #C850C0; }
+        }
+
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 font-inter overflow-x-hidden">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md fixed w-full z-10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="data:image/png;base64,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" alt="AIChatPal Logo" class="h-8 w-8 mr-2">
+                <span class="font-bold text-xl text-gray-800">Conso</span>
+                <span class="text-sm text-gray-600 ml-2">Your Virtual Consultant, Powered by AI!</span>
+
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                <a href="how-it-works.html" class="text-gray-700 hover:text-blue-600 transition">How It Works</a>
+                <a href="index.html#services" class="text-gray-700 hover:text-blue-600 transition">Services</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 transition">Meet Our Avatar</a>
+                <a href="blog.html" class="text-gray-700 hover:text-blue-600 transition">Blog</a>
+                <a href="index.html#pricing" class="text-gray-700 hover:text-blue-600 transition">Pricing</a>
+                <a href="about.html" class="text-gray-700 hover:text-blue-600 transition">About Us</a>
+            </div>
+            <a href="cta.html" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Start AI Consultation</a>
+                    <div id="userInfo" class="text-gray-700 "></div>
+                    <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition duration-300">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </button>
+        
+        </nav>
+    </header>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-20">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2" data-aos="fade-right">
+                <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-violet-600 text-transparent bg-clip-text">
+                    Meet RAJ,<br>Your AI Consultant
+                </h1>
+                <p class="text-gray-600 text-lg mb-8">
+                    Not your average chatbot - I'm RAJ, a hyper-realistic AI consultant who combines expertise with personality. Let's have a conversation that's actually worth having!
+                </p>
+                <div class="flex space-x-4">
+                    <button onclick="openHeygenChat()" class="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-8 py-3 rounded-full hover:scale-105 transition-transform">
+                        Start Chat
+                    </button>
+                    <button class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full hover:bg-blue-50 transition-colors">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-12 md:mt-0" data-aos="fade-left">
+                <div class="relative">
+                    <img src="https://files2.heygen.ai/avatar/v3/eb0a8cc8046f476da551a5559fbb5c82/full/2.2/preview_target.webp" alt="RAJ Avatar" class="rounded-2xl shadow-2xl glow">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
+                        <p class="text-sm font-medium text-gray-800">
+                            "Hi! I'm RAJ. Unlike my human colleagues, I never need coffee breaks! 😉"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 bg-white/50">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-violet-600 text-transparent bg-clip-text">
+            What Makes Me Different?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="feature-card bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-brain text-blue-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Deep Expertise</h3>
+                <p class="text-gray-600">Trained on vast amounts of consultancy data, I provide insights that are both accurate and actionable.</p>
+            </div>
+            <div class="feature-card bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-comments text-purple-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Natural Conversation</h3>
+                <p class="text-gray-600">I speak your language - no robotic responses or confusing jargon. Just clear, helpful dialogue.</p>
+            </div>
+            <div class="feature-card bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fas fa-clock text-violet-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">24/7 Availability</h3>
+                <p class="text-gray-600">Need advice at 3 AM? I'm here. Time zones and work hours don't apply to me!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Conversation Demo Section -->
+<section class="py-20">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-violet-600 text-transparent bg-clip-text">
+            Experience Natural Conversation
+        </h2>
+        <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-6">
+            <div class="space-y-4">
+                <div class="flex items-start space-x-4">
+                    <img src="https://files2.heygen.ai/avatar/v3/eb0a8cc8046f476da551a5559fbb5c82/full/2.2/preview_target.webp" alt="RAJ" class="w-14 h-10 rounded-full">
+                    <div class="bg-gray-100 rounded-2xl p-4 max-w-md">
+                        <p class="text-gray-800">Hi there! I'm RAJ, your AI consultant. What brings you here today?</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 justify-end">
+                    <div class="bg-blue-600 text-white rounded-2xl p-4 max-w-md">
+                        <p>I need help with my business strategy. Can you assist?</p>
+                    </div>
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEhISEBIQEA8QFRIQEBAPEA8PDw8PFREWFhURFRUYHSggGBomHRUVIjEhJSkrLi4uFx8zODMsOCgtLisBCgoKDg0OGhAQFysdHR0rLS0tLTAtLS0tLS0rLS0tLS0tLSsrLystLS0tLS03LS0tLS0tLS0rKy0tKysrLS0tK//AABEIALcBEwMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAEBQMGAAIHAQj/xAA/EAABAwIDBgMGAwQKAwAAAAABAAIDBBEFEiEGIjFBUXETYZEHI4GhscEyUnIUQrPRJDNigpKio7LC4UNz8P/EABkBAAMBAQEAAAAAAAAAAAAAAAECAwAEBf/EACMRAQEAAgMBAQACAgMAAAAAAAABAhEDITESQTJRBIETIkL/2gAMAwEAAhEDEQA/AOXkrS6i8RZnQ0ZOCpo0IHoiA6oVh8RI4JhSVljqoIICQo3RKUymx0t1BUg2TIgOCpNHUOYrBRYgDYJ/UrjpNVUF+CBbSuY4aaXVlpwHIv8AY2m2iDTIwwMboTxoSvDYsoTVinfVcfGhGqJgCiyoiIIH/G1lK1aKRqxW0LrEJgEuamEZ0WBtZZZerFm0GrTZjuxVcT3FZLNt1SNVwcnP/JsHLQvWrygppSE9xJjlo2hdopkpo6i6bw6qOU068buBnQXKKghspQxSNFkBjwNsoZHqSR6VVtWGrSbGt6icBVzHMWbG0668ggMc2jaw5Qbu6KpVuIF9y43KrJonpdjNa+V93HTkOQS18ui9rJ7lDvabXRNOkbpFiHddYjoQy9WLEzPQUxwiLM7XgEuCcYEeXmkz/i0XOip2+GdOS3wDZeStkIbuRMO/IRz/ACjzUtENz4LpuydI2KliDf3m53Hq52p+q8//ALT/AGpdEI9nNIG65nG2rsxuud7UYb+w1GRpJaQHtJ42JIt8l3eZ9gbrh/tAr2z1Ti03awCMHqWkkn1JHwTcVynJqWhe52OwTE2uAudVYI6kKl7H4HNVyZYzlY2xkeeDR08yusUmyUDGgEvcfzFx+ivny4y6S+P6A0c4TaE3SLF6I0r25SSx3C/I9Exw6ozAI9WbjS2XVM2tUsa0icpAUqj1StCiuhcTxiGmbmldl0vYAuNteQ7HvZFkmJYlDTMMk7xGxouSbk9gBqT5IfD9sqSRwbeRhdo0Pjdcm9uV7a356ZTe1lzLbXaWnrXAN8Voaw3vlFjma4OHG34AqzHtI+NnhMyn8O9laMtha1wATy1VZx9A+kKjEIYwC+RjQ78N3C57Dmt6eqZILscHA82m/DkvnSTF6sNZIGBsZ0DiwObcdHG7uZ581Pg+1MkcrHE3YTvtBc0EcwCD6Fa8YO9Ygy4SF5sicExlk7ALlwLnMa5xDn23nRtfb94xgG5491lXREuNlsLq6rn58Le4XySICokR09M4JdNEVbccsliWgdc2VmpW6JDhMVuPFPo36KHJe3bxeJyVE+VRTT2SPE8YbGCSQLJZNqW6MK6tDQdVzfaranUsiN3cCeQQe0G1D5btjJDeBdzPZVCdypJoPRImc88y4n4klWGTZ6UsvY3tdQbL4dnkiJ4FzfquuPw8ZeCbcnpMrfx8+VMDmSZHcbq1xYPmjBtyU/tCwsRTQPAtndlP1Vmw2AGJvYI0+F3HLKqgIc4W4FYrTisAEr+4+gWLbNpz6yyykIWoCbQMDUbhhs5axxKaBlitYG13wyfdVlwnbB9OwRubna3RpHEDoqRhs9mrd1RqubPil9NMlnxrbOaYFrAY2nQuvv26C3BUGufqmbpEmrDvJuPimHg27dj9lMTRRBwtmc95f1uDYfIBXYLimxO0stHdoAfG43LSbWPUFWyv29ky+6iDHH95xvb4Lmy48plev0ZellxekbVSsjJ3Yt+S3HXRrfqm1NSsYA1rQAOgVN9nWJeL44kdmmc/xCTxcC0D5WV3apyWXVbr0PVw82jXyUbIHo4kLy6f6YBIS0EkcATbrYLiu1u0753slafDceGRx3WtBAb14udqRfVd4lhDhrqvnDbmi8GvqIrZWiW7RlDAGPAc2wAGlncfJdHDd1qzCMCqKsF4v4ZcbF1hnPMqx0ns3kNiZWDqA0n4XT/AGhkcbQLANAsFbae+UKU58ssq67wYzGOO4vstVU2ZsbjJE4WdbS/cKtPjewgO3bciF3nEItw3C53tNSsLHEjWx9U2PPlLqhl/j45Y7x6B7NbSujqIHFrXZXsFswYH3c0AHoBxv5Bd8mZqvn32ZYe2oxGBr35RGTMBlBzujsQzy11+C+h5GqvJqVxel9TCCEmlh1Vhm4JTO1T+9EyxAMkylFtqR1SevcQdEBLWOtYcVSTZfrQnH8dbGDrryC5ljOKyTOOYnLyan+LU7jcuJJVQr22KpjGxylrXxEPKdV4161J1TaUdL2LgHuj5hdPcBZc22O0ZGey6EZd1RzvZMXOPa5YCl/8AYf8AaUbhEnum9gk3tXqczqdvRxPysjMHkPhN7KuOO4GOWiTF5PfP7j6BYg8UJ8V/cfQL1D5N9qcV4xbOWrE5jOnbot2N1XlNwUkLbuTaTpxQR6KCqlANkewZWJDWy7yXKDgZRtuLpdWt3kVBPooJRmcl2powwuI2uj6o6LbCorN1W+JWACHtZmBTPY8OY4tcOBBsVfY8eqC22Yd8ouqBgzruVvg4I3DG+xK5U5wbH2tcWTutmNw93C/QqzMqGHUOaR1DhZcwxSNTYaLAKOfBvuGwzvldQLrrg/tZdnxUgnRrYIwDfXdzWFupeR/JdZwnE3WAdvAcDzVP9puFsc9tRpmMlM4HmPesjcPm0qWO8LuujCfVV5uNTMs4OjhjOkbJI3SSvI46Nv8AZMqDbx7R7xgkbcNJiDmSAuNm+7d1PmmVFQMb/W5w03c2SMPJbmOYtcG68SbaEW8+M1FRRTTRmNshhhd4hllB97KBuNAdrYXzX01DbX1Rlx146rjf7I8R22fKXCJvhtBc0Z2ufIcpsXZRwHkdfJVuqqp5Ll0glYDlcwsMTmknKN1wB4nsrfJCyCpmMjJHQyvzZ4hvRyEajTUggX01vfjfTfGqCJzA6IPDNHF8hcc5GrQM2tr2N/Tjcb6x143xf7Vn2Sx5cVjyu3ckwdoR/wCMu8PhycBrzynrr31y5H7IaFpqppLaxeKQeYc9zWj5Z110o5ZfTkzx+bpBNHcJXVQlOSUNUM0S/O0qqGJRpaxoKsGLR6FVMVdnEdCunCaxS+dtMTjFiqFjbNVcsVrRZUjFZcxTYhOOyloXoGoWNWw4hFZ1XZVlo4+wVuq5LRk+Sqeyzvdx9grTiH9Wey5e/pOeOQbczl9Qy/LQK3YO33Leypu2Y/pDe6ueDn3Tey7J4TSsYo33r+4+gWLfFR71/cfQLEuw+VHetY1u4LVg1RdBrS8ETSfiUFKNFLEbOTENaubdVWqZSXJ/V/gVbkG8hTYzRxhMReQFb6DBxoSFXcAADmrodE0WCbHDrbZZgZsPAbpoq1ixPBXmpGiruIYfmN0mUbG7LNn4nZldIm2CXYRQ5QEdVyZAjIF9K8Yqcqgo64WukOPYlc2ugoqw20K2V/FcON0vBcRubJntJTiallOuaNj5GgC+YsAky+rG+ipmyUhLtV0ekYCLHUHQg8wo3DrbW/OXTnFRjE74YmxNLxne2UAFziWtBa2w4gi5tzsiKGLE6nLUU73sbyaG+7dbqw+nC6TVL3YZWPgJzRhzHMPVlrsd3yuyn1Vs3D7+OFjy4EmzmMcTbXiNT8VH5068cvqeqvjWGYlCXVNRJJlY7NYABjb9GXHLS9uagkr6kU8jZbhrzEYg7dcDI52YW5DK29uXxTnEWgu8SSBkZj1OaRj3iw00A+6qktc6tqoorlrZJWRZhbcEj2sdJ3AOn/a3zLdabLL5nVdh9m+EsgpGSi5kqR4ryejiXNDRyFj81ZZJNVFCxsTGsYMrGNaxo6NaLAegQdRU2TfO3Hct+j2SLJnCySRV4LrXRbprrfNhbQuKC7SqRLR6uPUlXOtkFiqzK4G6vxzcS+vmqvilLa6qGIMsVesWeLFUnFDqms0eZ7Lmlb34KNqkLShDV0nZerAZGOyttdVDwyuTYPiRZl14FWqqxoGPimvD3tH6VXbB952d1ccGePCb2XO8Zqc8oPQq24XXARjsjoZ4FxR48V/cfQLEqxCrvI7v9gsUriJE4LRgWpkWrXqih1SuFlNCAXJVHOiaWfVEh9UQjIqtVts5WczXYq5XDVDRpkY4NUWIV4oK3Rc5oHWKtFHWWC6MJuIZ3tc2y5kTFR5kiwWqzFW2A6Ll5b3pbDwL4ORJcdqgGlPMTks1VDE7uBVOPubC+qLiUt3FbUUi1xGEh1hqTyHE/BNMI2fqZLWie0fmkaYm+rrX+F0tx7WnJJFl2TlAK6XQSXAXPaShiowPFkMkptlihFrn9TvuAmNVjUjYyBZpI0awk28rnUnzVLjuac+WW6E9ouGCeQvbqcjXAjyLmH5tVawfFaqnGQs8QN0Z1b6rouO0fgmlYdR4PhE/22EE38zncfgkww9ocbDivNzzuGVj0+PCZ4S/qm45ilRUaZPDBFjrcn0Q9FRuhb4n7zPeX55m6j5hW+bDAXXstYqASzQw20fI0PHWMHM8f4Q5L/yXLUUnFjjvKulQ1oeXNvaRgBc08bHg4dRcEdwUkxWqcHWSnbqeSmmpJ4yWuIljcRwIu1wBHMauXjsQbUljg5sb/wB5rrhpP9l387d13zDXbybTCgG8noBshcNo7WJTbwtEmV7GTat41KQ02VMfiLhdX/F6a4KpNVhhDjoujhs0585dkdfUkgqsVpuVcMSw82uAqpV07r8EOXvw2HVDUMWYo6WBeYVFqbo+pZZJF7SFxyuR75DYaoaaK8gTWoo8rAV0y9Ifqt1Lt5OaWoIYk9Y2z00gZufBSntVvkLaiYlxXqin/EV4psFususWJVWwciaR2qFRFJxTBVhgdupbWM1TCk1Ciq4k0TA07dU2hCXxssmlMOCt5EvasmBxltirdHUWCruGs3QmsjTZc+WO1d6Q4vUEiw5qBsLGtaZNRxy8M3kfJFfs5NtFXdpqstmLL6MawdibEj6KmP8ARasbcVawWjDYx0Y1rB8ktxDGyL5Sb/mJufgq02sN+K1nmuU2oGqLgkeX5zci9ifI8bE80yofe1NOziHSx3H9hrg53+VpS5h4dAAB9/mn+wlP4lZm5Qxvd2c6zB8i5a+N+rftSGzw5ozmdA4Scxpq1x14ixPySKN+gJVufRixtzBB8wRYgpDW0PhW4lh0Dv8AifP6rzufDfcej/i8k/jS2bgSj8BoxAf2mcHeGSFoF3kuBu63LQfM9UwwXDWlviygZeLA7QfrN/kiqpwmeMtyxl9bWBcbcPRbh4v2t/kc/wD4ije0HaGnnyQNbK2eKRsm+xuV0ZjcDZwceZb6JBQ1ZuBYW5ovbyANrHWGuSP/AGpAZHNa4tNjldY9DY2K9DGajgq8YXi8jLGN5Lfy3+is9HtKDbO2/W2h9OC5hhk+RrQOAAFvgjziVkMsJQlsdQNRHL+FwPlwPol9VRA8lz5+NOAJBIDRfu46D7+gVx2GxJ1TS+8OaSJ7oyTxc2wc0+jrf3VO4/I+oqmhuOCr9bggN9FfpYboKakC2wsc4OFFh0CX4ixwXRqigvySDE8LvyRHam00G+2/VP8AEYh4a0/YC03twWYjJu2TbbSm4g3fCbQs3EBUR3fdGmSzUIJHU/iPdYsm1JWJTaCBq2EZRkcCJjpLraNstEJRVLTm6ZxUCPp8PR0S5NKKFS1cGiaU9HZbVMGiaE2rYh1TSCDgtZIrHQJphtKXEEqmV6LjNH+FQaBP46S4Q2GQWsnsbNFDK6OBjpFyLFXuM05dcOMklweRDzu/C1vgu1VU7ImOkeQGsBc4nQWAXDKmRz3OeTdzy57/ADc4kk/NHju2aiTUd1I51zbqdUKDqPh9UXAN6/mFVjO6vHszp92ol/M9sQ7Mbc/N/wAlQcy6psLT+HRQ9ZM0p887iWn/AA5Uud6CerCCo5I2kEOaHB9hY8CtrqaAaXUacK6C53iXAcG8GN7AaLbKBwW5K0KLOUe0E/01/k2L+GFWqg+7f+kj1FlYNvHXrZvLwx/pMVcrTudy0fO/2Vp4VLDLYKJ9Tf6KJz7NQsT90ea1rDZ5d09x8hf7q/8AslcDFU713eKwlvNrfDsD2JDv8JXN3m4Hr66p57P8a/ZatrXf1dTaB/k4uHhu+DtOzikz7GOykKNzFKvCosEkhQFTSAps5RPamlCq1U0Hkkldh3FXaWJLqmnTyhtzmrw+x4JfUxGyvdZRXSSsoUR2pjoFieOodViGjfQCGBH08CyGNMKeNNIW1vT06YQwLyCNHwxraBpHAvZKa6NjjRLIFgI24Zc8E5oaC3JGxU4R8MSFotqSKyOaVExqkClTK57QqlgpHRucA6VzLNvqWteCTboNFyN7chsb2Vs9oVaJqrICcsLfCBH573cfU2/uqqyPIFjr9FbCagPIjqPVHQ6EfE/JLqN19emnzRsB3j2+6eNRMr9Dbjy7ruNDAIoo4xwjYyMdmtDfsuK4VH4lRTs/NNED+nOL/K67ddJm0b3REJ3R/wDc0ISiW/hHSylTIbrUleXXhKLOR7bG9dP3Z/BYq3iJ1jb5ud6C33Vh2uN62o/WP4bVWKx15f0tA+JufuFb8LHlU7c76IaN278vipJjohqc/hHn9Ev6P4PmNgjtksLNVWQMGjWOE0h6MjIcfU2HxS2V3yTnYOrMVfT24SF0TvMPaQP8wahk0dqzLUuXhKjcVKRmxeonPXhUbk2isc5DShSuKheU0ADPHdLKmnunMiElajCq+6j1XqamMLEzbU+BiY07EFThM6cInFwNR8LUNCEbEEKAiJqLiCHiRUaVhEYRUaGjRLCkpkwUNfVCGOSQ8I2ufbqQNB62UgKqftIryynbEDYzO3uvhsFz8y1LJui53WzlxJJu5xLnHqSblLZ5L6XNlK5QSu6LorJaHRp7oyA8fh90JSDcHnc/NExmw+KMCrDsPHnroOjM8h+DCB8yF14OXJfZ3GTVOfewYwg+eYjT5LqgekzZOXotp3R2+yXtF0c42Z/d/wCKnWDFy0L15KdComvRZyjag3rKj9f/ABaqiZLveerj6DQfRWvafdq6jydm/wBNpVOg4d1S/gwRIdENTHVTvOiFpTql/R/B0hsLBSYZN4dRA8cWTQu9JGlQKTD7ePBfh40N+3itutWjv7itCvHOXhKQrxyjcti5aEogjcoXKZxULyjC1BIhpERIULIUSoisWpcsTspsD0whlSyEI2IImtNIZ0ZFOlcYRcQQ0GzSKZFRypbEioilsbZlHKiGSpfGUQ1yWw0o0Srl+3eJyTVTmNDcsHuxrmdrZziRy1t6BdHD1ybbGR/7bPmzNdmblyBu83I3KeHTmVsZqmnZS4u52PbRQT2t08rar2R5H7zwfyhzSfjpYIWWR371/QD6J7TSGcP4WjyH0UpNlHGNB2A+S1kdcozwHR/ZfQ3ZJL+Z+QdmgH6uV/Eao3s6MkdMHDMWuc5zoz0JsHs+A4c1eWTAgEHQ6gpcthG4FkRIN0nnlP0QbnIp/wCA/pP+1JWDFBZraKcyWS/FC4Pit+Fx17jVPjNhXN9vhlqJz+ZjD6sDfsqbGrn7TRaS4N80cYPcSuv9lS2nRHI2PiV50Q1KpSdFFSlLPTfg0LWldaWPykYf84WLykF5Yh1kjHq8BHII7252pXhcoXyLXOk0ltMStS5RZ1q56Om2kcVA8rV0qhfMiDWUoSQlSSTIaSZNAakrFEZl4mZXoqcoyKnKxYsajYqco2KmKxYhSio6ZFR0y8WJLREMgUoiWLEDR7kXM9uwRWOvoHMjItxIsRr8QVixaejFec/pogpoieh7F1/msWKlNPRmfUD4nsP+0ZgeHOq52Qt0zXLj0YPxHv8AzXqxaBk7VQ0rYmtY0ABoDRboERFukt5O3h5Hn/NerEtCNy63FGPO6f0/ZYsS0S55UddHnZbnxB6ELFiaeg5jt7DdrD0uw99CPoVSGO0WLE/J/IePx6XKOmeF4sU56e+Cy5S4OL1NMOs8H8VqxYjk0dqLl5mWLEIgwuUb3rFiwB5HoaSRYsTRgssiFlkXixMyAvWLFizP/9k=" alt="User" class="w-14 h-10 rounded-full">
+                </div>
+                <div class="flex items-start space-x-4">
+                    <img src="https://files2.heygen.ai/avatar/v3/eb0a8cc8046f476da551a5559fbb5c82/full/2.2/preview_target.webp" alt="RAJ" class="w-14 h-10 rounded-full">
+                    <div class="bg-gray-100 rounded-2xl p-4 max-w-md">
+                        <p class="text-gray-800">Absolutely! I'd love to help you develop a solid business strategy. Let's start by understanding your current challenges and goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 gradient-bg">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-white mb-8">Ready to Start Your Consultation?</h2>
+        <p class="text-white/90 text-lg mb-12 max-w-2xl mx-auto">
+            Join thousands of satisfied users who have transformed their businesses with RAJ's insights
+        </p>
+        <button class="bg-white text-blue-600 px-8 py-3 rounded-full hover:scale-105 transition-transform font-semibold">
+            Begin Your Journey
+        </button>
+    </div>
+</section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Conso</h4>
+                    <p class="text-gray-400">AI-Powered Financial Consulting Solutions</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">Email: support@conso.ai</li>
+                        <li class="text-gray-400">Phone: +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2024 Conso AI. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
+<script>
+    !function(window){
+        const host="https://labs.heygen.com",
+        url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJlYjBhOGNjODA0NmY0NzZkYTU1MWE1NTU5%0D%0AZmJiNWM4MiIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3Yz%0D%0AL2ViMGE4Y2M4MDQ2ZjQ3NmRhNTUxYTU1NTlmYmI1YzgyL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0%0D%0ALndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImZl%0D%0ANWRiMzExOTZiZDQ1NmQ5OWUzZWE2MTA4OTZlNmIzIiwidXNlcm5hbWUiOiJhM2RjNWJmNjBiOGM0%0D%0AMWQxOGRmZjE1MmYyZDEyN2QyZSJ9&inIFrame=1",
+        wrapDiv=document.createElement("div");
+        wrapDiv.id="heygen-streaming-embed";
+        const container=document.createElement("div");
+        container.id="heygen-streaming-container";
+        const stylesheet=document.createElement("style");
+        stylesheet.innerHTML=`
+        #heygen-streaming-embed {
+            z-index: 9999;
+            position: fixed;
+            right: 40px;
+            bottom: 10px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);
+            transition: all linear 0.1s;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #heygen-streaming-embed.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #heygen-streaming-embed.expand {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            right: auto;
+            bottom: auto;
+            width: min(90%, 870px);      
+            height: min(80vh, 490px);     
+            border: 0;
+            border-radius: 8px;
+
+        }
+        #heygen-streaming-container {
+            width: 100%;
+            height: 100%;
+
+        }
+        #heygen-streaming-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+
+        }
+        `;
+        // In your show/hide event handler:
+
+        const iframe=document.createElement("iframe");
+        iframe.allowFullscreen=!1,
+        iframe.title="Streaming Embed",
+        iframe.role="dialog",
+        iframe.allow="microphone",
+        iframe.src=url;
+        let visible=!1,initial=!1;
+        window.addEventListener("message",(e=>{
+            e.origin===host&&e.data&&e.data.type&&"streaming-embed"===e.data.type&&
+            ("init"===e.data.action?(initial=!0,wrapDiv.classList.toggle("show",initial)):
+            "show"===e.data.action?(visible=!0,wrapDiv.classList.toggle("expand",visible)):
+            "hide"===e.data.action&&(visible=!1,wrapDiv.classList.toggle("expand",visible)))
+        })),
+        container.appendChild(iframe),
+        wrapDiv.appendChild(stylesheet),
+        wrapDiv.appendChild(container),
+        document.body.appendChild(wrapDiv)
+
+    }(globalThis);
+    </script>
+</body>
+</html>
