@@ -1,5 +1,6 @@
-Flask==2.2.2
-flask-cors==3.0.10  # Use a version that's available
-python-dotenv==1.0.0
-groq==0.0.1
-markdown2==2.4.4
+Flask
+flask-cors
+python-dotenv
+groq
+markdown2
+gunicorn
