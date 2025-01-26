@@ -135,13 +135,146 @@
         .chat-history-item:hover .delete-chat {
             opacity: 1;
         }
+        .faq-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0 auto;
+            /* New AOS-related properties */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .faq-section.aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .faq-question {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(66, 153, 225, 0.3);
+            color: #4299e1;
+            padding: 8px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            max-width: 300px;
+            margin: auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            /* Staggered animation for individual FAQ questions */
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .faq-section.aos-animate .faq-question {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Staggered delay for each FAQ question */
+        .faq-section.aos-animate .faq-question:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .faq-section.aos-animate .faq-question:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .faq-section.aos-animate .faq-question:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        .faq-section.aos-animate .faq-question:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+        .faq-question:hover {
+            background: rgba(66, 153, 225, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Comprehensive sidebar and layout styles */
+        .app-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            height: 100vh;
+            transition: grid-template-columns 0.3s ease-in-out;
+        }
+        
+        .app-container.sidebar-collapsed {
+            grid-template-columns: 0 1fr;
+        }
+        
+        .sidebar {
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            max-width: 280px;
+        }
+        
+        .sidebar-collapsed .sidebar {
+            width: 0;
+            max-width: 0;
+            opacity: 0;
+            padding: 0;
+        }
+        
+        .sidebar-toggle {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #2d3748, #1a365d);
+            color: white;
+            padding: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            z-index: 50;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-toggle:hover {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chat-section {
+            flex-grow: 1;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .faq-container {
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+            max-height: 300px;
+            overflow: hidden;
+        }
+        
+        .faq-container.hidden {
+            opacity: 0;
+            max-height: 0;
+            padding: 0;
+            margin: 0;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body class="text-gray-100">
-    <div class="flex h-screen">
+    <div class="app-container" id="app-container">
+        <!-- Sidebar Toggle Button -->
+        <div class="sidebar-toggle" id="sidebar-toggle">
+            <i data-feather="chevron-right" id="sidebar-toggle-icon" class="w-6 h-6"></i>
+        </div>
         <!-- Sidebar -->
-        <div class="w-72 sidebar-gradient shadow-lg p-6 flex flex-col">
+        <div class="w-72 sidebar-gradient shadow-lg p-6 flex flex-col sidebar" id="sidebar">
             <div class="flex items-center mb-4">
                 <img src="data:image/png;base64,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" alt="ConsoAI Logo" class="h-10 w-10 mr-2"> 
                 <h1 class="text-2xl font-bold text-blue-300">Conso</h1>
@@ -157,13 +290,35 @@
         </div>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
+        <div class="flex flex-col main-content" id="main-content">
             <header class="header-gradient shadow-sm p-6">
                 <h2 class="text-3xl font-semibold text-blue-300">Virtual CA Expert</h2>
                 <p class="text-blue-100 mt-2">Your AI-powered consultant for accounting, taxation, and legal matters</p>
+
+                <!-- FAQ Section -->
+                <div class="faq-container px-16" id="faq-container">
+                    <h3 class="text-2xl font-semibold text-blue-300 mt-2 mb-3 text-center">Quick Consultations</h3>
+                    <div class="faq-section" id="faq-section">
+                        <div class="faq-question" data-query="What is Income Tax Return filing?">
+                            Income Tax Return Filing
+                        </div>
+                        <div class="faq-question" data-query="What is GST Registration?">
+                            GST Registration Process
+                        </div>
+                        <div class="faq-question" data-query="How to start a private limited company in India?">
+                            Company Registration Guide
+                        </div>
+                        <div class="faq-question" data-query="What are TDS rules in India?">
+                            TDS Rules in India
+                        </div>
+                        <div class="faq-question" data-query="What is Digital Signature Certificate (DSC) in India?">
+                            Digital Signature Certificate
+                        </div>
+                    </div>
+                </div>
             </header>
-            <div class="flex-grow p-6 overflow-y-auto custom-scrollbar bg-gray-900 bg-opacity-50">
-                <div id="chat-messages" class="space-y-6">
+            <div class="chat-section flex-grow overflow-y-auto custom-scrollbar bg-gray-900 bg-opacity-50" id="chat-messages">
+                <div class="space-y-6" id="messages-container">
                     <!-- Messages will be added here -->
                     <div class="message-bubble bot-message bg-white bg-opacity-90 dark:bg-gray-800 dark:text-white rounded-lg p-4 shadow-lg">
                         <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">Welcome to ConsoAI!</h1>
@@ -178,7 +333,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Input Area -->
             <div class="input-area-gradient p-6 shadow-lg">
                 <form id="chat-form" class="flex items-center">
@@ -199,7 +354,276 @@
     </div>
     <script>
         feather.replace();
-        AOS.init();
+        AOS.init()
+                // Hardcoded FAQ Responses (same as previous implementation)
+            const FAQ_RESPONSES = {
+            "What is Income Tax Return filing?": `
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">Comprehensive Guide to Income Tax Return Filing in India</h1>
+                <p>Income Tax Return (ITR) filing is a critical annual financial responsibility for individuals and businesses in India, serving as a comprehensive declaration of one's financial activities to the Income Tax Department.</p>
+                
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Understanding ITR Filing Requirements</h2>
+                <ul class="list-disc ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Mandatory for individuals with taxable income above ₹2.5 lakhs per financial year</li>
+                    <li>Different ITR forms are designed to capture various income sources:
+                        <ul class="list-circle ml-4">
+                            <li>ITR-1 for salaried individuals with simple income</li>
+                            <li>ITR-2 for individuals with multiple income sources</li>
+                            <li>ITR-3 for professionals and self-employed individuals</li>
+                        </ul>
+                    </li>
+                    <li>Annual deadline typically falls on July 31st for most taxpayers</li>
+                    <li>Penalties for late filing can range from ₹5,000 to ₹10,000</li>
+                    <li>Filing helps in claiming tax refunds and serves as proof of income</li>
+                </ul>
+
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Key Benefits of Timely ITR Filing</h2>
+                <ul class="list-disc ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Legal compliance and avoiding potential legal complications</li>
+                    <li>Easier loan approval processes</li>
+                    <li>Maintaining a clean financial record</li>
+                    <li>Potential carry-forward of losses for future tax adjustments</li>
+                </ul>
+            `,
+            "What is GST Registration?": `
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">Comprehensive GST Registration Guide</h1>
+                <p>Goods and Services Tax (GST) registration is a mandatory process for businesses operating in India, designed to streamline taxation and ensure transparent financial transactions.</p>
+                
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">GST Registration Thresholds</h2>
+                <ul class="list-disc ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Mandatory for businesses with annual turnover exceeding:
+                        <ul class="list-circle ml-4">
+                            <li>₹40 lakhs for regular states</li>
+                            <li>₹20 lakhs for special category states</li>
+                        </ul>
+                    </li>
+                    <li>Voluntary registration available for businesses below threshold</li>
+                </ul>
+
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Registration Process</h2>
+                <ol class="list-decimal ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Online registration through official GST portal</li>
+                    <li>Required documents preparation:
+                        <ul class="list-circle ml-4">
+                            <li>Permanent Account Number (PAN)</li>
+                            <li>Aadhaar Card</li>
+                            <li>Business proof documents</li>
+                            <li>Bank account details</li>
+                        </ul>
+                    </li>
+                    <li>Complete online application form</li>
+                    <li>Upload necessary documents</li>
+                    <li>Verification and approval by GST authorities</li>
+                </ol>
+
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Benefits of GST Registration</h2>
+                <ul class="list-disc ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Input tax credit benefits</li>
+                    <li>Legal authorization to collect GST</li>
+                    <li>Interstate business operations</li>
+                    <li>Enhanced business credibility</li>
+                </ul>
+            `,
+            "How to start a private limited company in India?": `
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">Comprehensive Guide to Incorporating a Private Limited Company</h1>
+                <p>Starting a private limited company in India involves a structured process governed by the Ministry of Corporate Affairs (MCA), designed to ensure proper business establishment and legal compliance.</p>
+                
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Detailed Incorporation Steps</h2>
+                <ol class="list-decimal ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Digital Signature Certificate (DSC) Acquisition
+                        <ul class="list-circle ml-4">
+                            <li>Essential for online document signing</li>
+                            <li>Obtainable from authorized Certificate Authorities</li>
+                        </ul>
+                    </li>
+                    <li>Director Identification Number (DIN) Application
+                        <ul class="list-circle ml-4">
+                            <li>Unique identifier for company directors</li>
+                            <li>Can be applied online through MCA portal</li>
+                        </ul>
+                    </li>
+                    <li>Company Name Reservation
+                        <ul class="list-circle ml-4">
+                            <li>Submit multiple name choices</li>
+                            <li>Ensure name compliance with MCA guidelines</li>
+                        </ul>
+                    </li>
+                    <li>Incorporation Document Preparation
+                        <ul class="list-circle ml-4">
+                            <li>Memorandum of Association (MOA)</li>
+                            <li>Articles of Association (AOA)</li>
+                            <li>Address proof and identity documents</li>
+                        </ul>
+                    </li>
+                    <li>Filing with Registrar of Companies (RoC)</li>
+                    <li>Certificate of Incorporation Issuance</li>
+                </ol>
+
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Financial Considerations</h2>
+                <p class="mt-2">Estimated total cost for incorporation: ₹10,000 to ₹25,000, varying based on professional assistance and documentation requirements.</p>
+            `,
+            "What are TDS rules in India?": `
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">Comprehensive Guide to Tax Deducted at Source (TDS) in India</h1>
+                <p>Tax Deducted at Source (TDS) is a sophisticated taxation mechanism designed to collect taxes directly from the source of income, ensuring consistent and timely tax collection.</p>
+                
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">TDS Applicability and Rates</h2>
+                <ul class="list-disc ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Applicable Income Categories:
+                        <ul class="list-circle ml-4">
+                            <li>Salary payments</li>
+                            <li>Rental income</li>
+                            <li>Professional fees</li>
+                            <li>Interest income</li>
+                            <li>Commission payments</li>
+                        </ul>
+                    </li>
+                    <li>TDS Rates Range: 1% to 30% depending on income type and recipient category</li>
+                </ul>
+
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Compliance and Depositing Rules</h2>
+                <ol class="list-decimal ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>TDS must be deposited by 7th of the following month</li>
+                    <li>Quarterly TDS returns mandatory</li>
+                    <li>Penalties for non-compliance:
+                        <ul class="list-circle ml-4">
+                            <li>Up to 1.5% penalty per month</li>
+                            <li>Potential legal consequences</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Importance of TDS</h2>
+                <ul class="list-disc ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Ensures steady government revenue</li>
+                    <li>Reduces tax evasion</li>
+                    <li>Simplifies tax collection process</li>
+                </ul>
+            `,
+            "What is Digital Signature Certificate (DSC) in India?": `
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">Digital Signature Certificates: Comprehensive Overview</h1>
+                <p>Digital Signature Certificates (DSC) are electronic credentials that validate the identity of an individual or organization in the digital ecosystem, providing secure and legally recognized digital authentication.</p>
+                
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Types of Digital Signature Certificates</h2>
+                <ul class="list-disc ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Class 1 Certificates: 
+                        <ul class="list-circle ml-4">
+                            <li>Basic personal identification</li>
+                            <li>Used for email communication</li>
+                        </ul>
+                    </li>
+                    <li>Class 2 Certificates:
+                        <ul class="list-circle ml-4">
+                            <li>Used for e-filing income tax returns</li>
+                            <li>Requires identity proof verification</li>
+                        </ul>
+                    </li>
+                    <li>Class 3 Certificates:
+                        <ul class="list-circle ml-4">
+                            <li>Highest security level</li>
+                            <li>Used for critical online transactions</li>
+                            <li>Requires physical presence for verification</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Key Applications</h2>
+                <ol class="list-decimal ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Company incorporation documents</li>
+                    <li>Income tax filing</li>
+                    <li>GST registration and returns</li>
+                    <li>Online tender submissions</li>
+                    <li>Intellectual property registrations</li>
+                </ol>
+
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4 mb-2">Obtaining a Digital Signature Certificate</h2>
+                <ul class="list-disc ml-6 mt-2 text-gray-700 dark:text-gray-200">
+                    <li>Apply through licensed Certifying Authorities (CAs)</li>
+                    <li>Required documents:
+                        <ul class="list-circle ml-4">
+                            <li>PAN Card</li>
+                            <li>Aadhaar Card</li>
+                            <li>Passport or Driving License</li>
+                        </ul>
+                    </li>
+                    <li>Validity typically ranges from 1-3 years</li>
+                </ul>
+            `
+        };
+
+        // Add event listeners to FAQ items
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqSection = document.querySelector('.faq-section');
+            
+            function checkScroll() {
+                const faqSectionPosition = faqSection.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (faqSectionPosition < windowHeight * 0.75) {
+                    faqSection.classList.add('aos-animate');
+                }
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Initial check
+        });
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', function() {
+                const query = this.getAttribute('data-query');
+                const response = FAQ_RESPONSES[query];
+                
+                // Remove any previous input text
+                // This ensures the input area isn't automatically populated
+                userInput.value = '';
+                
+                // Add typing indicator
+                const typingIndicator = addTypingIndicator();
+                
+                // Simulate AI response with timeout
+                setTimeout(() => {
+                    // Remove typing indicator
+                    typingIndicator.remove();
+                    
+                    // Add user message
+                    addMessage(query, 'user');
+                    
+                    // Add bot response
+                    addMessage(response, 'bot');
+
+                    // Update conversation history and title
+                    updateConversationHistory(query, response);
+                }, 1000); // Simulates AI thinking time
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const appContainer = document.getElementById('app-container');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebarToggleIcon = document.getElementById('sidebar-toggle-icon');
+            const faqContainer = document.getElementById('faq-container');
+            const chatMessages = document.getElementById('chat-messages');
+
+            // Sidebar Toggle Functionality
+            sidebarToggle.addEventListener('click', () => {
+                // Toggle app container class for sidebar collapse
+                appContainer.classList.toggle('sidebar-collapsed');
+                
+                // Toggle sidebar toggle icon
+                const isCollapsed = appContainer.classList.contains('sidebar-collapsed');
+                sidebarToggleIcon.setAttribute('data-feather', isCollapsed ? 'chevron-right' : 'chevron-left');
+                feather.replace(); // Refresh feather icons
+            });
+
+            // FAQ Visibility on Scroll
+            chatMessages.addEventListener('scroll', () => {
+                const scrollPosition = chatMessages.scrollTop;
+                const scrollThreshold = 100; // Pixels to scroll before hiding FAQ
+
+                if (scrollPosition > scrollThreshold) {
+                    faqContainer.classList.add('hidden');
+                } else {
+                    faqContainer.classList.remove('hidden');
+                }
+            });
+        });
         
         const chatForm = document.getElementById('chat-form');
         const chatMessages = document.getElementById('chat-messages');
@@ -362,7 +786,7 @@
                 const currentConversation = conversations.find(c => c.id === currentConversationId);
                 const history = currentConversation ? currentConversation.messages : [];
         
-                const response = await axios.post('https://caexpert.onrender.com/chat', {
+                const response = await axios.post('http://caexpert.onrender.com/chat', {
                     message: message,
                     history: history
                 });
@@ -386,9 +810,20 @@
                     { sender: 'user', message: userMessage },
                     { sender: 'bot', message: botMessage }
                 );
+        // Update the conversation title with the first user message (FAQ query)
+                if (conversation.messages.length <= 2) {
+                    // If it's the first or second message (initial FAQ), 
+                    // use the first user message as the title
+                    conversation.title = userMessage.length > 30 
+                        ? userMessage.substring(0, 30) + '...' 
+                        : userMessage;
+                }
+                
                 saveConversations();
+                loadChatHistory(); // Reload to update chat titles
             }
         }
+        
         
         // Event Listeners
         chatForm.addEventListener('submit', handleSubmit);
