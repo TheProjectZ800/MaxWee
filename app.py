@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from groq import Groq
 import markdown2
 import re
+from docx import Document
 
 # Load environment variables
 load_dotenv()
@@ -23,14 +24,27 @@ client = Groq(
 
 ##############################################
 ## Webscrap Content ##
-# Read the contents of the output.txt file
-try:
-    with open('output.txt', 'r', encoding='utf-8') as file:
-        output_content = file.read()
-    print("output.txt loaded successfully.")
-except Exception as e:
-    print(f"Error reading output.txt: {e}")
-    output_content = ""
+# Read the contents of the .txt and .docx file
+def read_file(file_path):
+    try:
+        if file_path.endswith('.txt'):
+            with open(file_path, 'r', encoding='utf-8') as file:
+                content = file.read()
+        elif file_path.endswith('.docx'):
+            doc = Document(file_path)
+            content = '\n'.join([para.text for para in doc.paragraphs])
+        else:
+            raise ValueError("Unsupported file format. Only .txt and .docx are allowed.")
+        
+        print(f"{file_path} loaded successfully.")
+        return content
+    except Exception as e:
+        print(f"Error reading {file_path}: {e}")
+        return ""
+
+# Example usage
+file_path = 'BUDGET2025.txt'  # Change to 'output.txt' for a text file
+output_content = read_file(file_path)
 
 @app.route("/chat", methods=["POST"])
 def chat():
