@@ -254,7 +254,7 @@
         .faq-container {
             transition: all 0.3s ease-in-out;
             opacity: 1;
-            max-height: 300px;
+            max-height: 400px;
             overflow: hidden;
         }
         
@@ -268,18 +268,34 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body class="text-gray-100">
-    <div class="app-container" id="app-container">
+    <div class="app-container flex flex-col md:flex-row" id="app-container">
         <!-- Sidebar Toggle Button -->
         <div class="sidebar-toggle" id="sidebar-toggle">
             <i data-feather="chevron-right" id="sidebar-toggle-icon" class="w-6 h-6"></i>
         </div>
         <!-- Sidebar -->
-        <div class="w-72 sidebar-gradient shadow-lg p-6 flex flex-col sidebar" id="sidebar">
+        <div class="w-full md:w-72 sidebar-gradient shadow-lg p-6 flex flex-col sidebar" id="sidebar">
             <div class="flex items-center mb-4">
                 <img src="data:image/png;base64,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" alt="ConsoAI Logo" class="h-10 w-10 mr-2"> 
                 <h1 class="text-2xl font-bold text-blue-300">Conso</h1>
-                <p class="text-xl font-semibold text-blue-100">AI</p>                
-            </div>
+                <p class="text-xl font-semibold text-blue-100">AI        
+            
+                <div class="relative inline-block text-left">
+                    <button id="menuBtn" class="bg-gray-700 text-white ml-14 px-2 py-2 rounded-lg hover:bg-gray-800">
+                        <i data-feather="align-justify" class="w-5 h-5"></i>
+                    </button>
+                    <div id="menuDropdown" class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                        <div class="py-1" role="none">
+                            <span id="menuUserInfo" class="text-gray-700 font-semibold"></span>
+                        </div>
+                        <a href="index.html#pricing" class="block px-4 py-2 text-sm text-gray-700" tabindex="-1" id="menu-item-0">Pricing</a>
+                        <a href="cta.html"  class="block px-4 py-2 text-sm text-gray-700" tabindex="-1" id="menu-item-1">Start AI Consultation</a>
+                        <button id="logoutBtn" class="block px-4 py-2 text-sm text-red-600">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div></p>        
+                </div>
+            </div>    
             <button id="new-chat" class="bg-blue-500 text-white rounded-full py-3 px-6 mb-6 hover:bg-blue-600 transition duration-300 flex items-center justify-center">
                 <i data-feather="plus" class="w-5 h-5 mr-2"></i>
                 New Consultation
@@ -290,15 +306,15 @@
         </div>
 
         <!-- Main Content -->
-        <div class="flex flex-col main-content" id="main-content">
-            <header class="header-gradient shadow-sm p-6">
-                <h2 class="text-3xl font-semibold text-blue-300">Virtual CA Expert</h2>
+        <div class="flex flex-col flex-grow main-content" id="main-content">
+            <header class="header-gradient shadow-sm p-4 md:p-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-blue-300">Virtual CA Expert</h2>
                 <p class="text-blue-100 mt-2">Your AI-powered consultant for accounting, taxation, and legal matters</p>
 
                 <!-- FAQ Section -->
-                <div class="faq-container px-16" id="faq-container">
-                    <h3 class="text-2xl font-semibold text-blue-300 mt-2 mb-3 text-center">Quick Consultations</h3>
-                    <div class="faq-section" id="faq-section">
+                <div class="faq-container px-4 md:px-16" id="faq-container">
+                    <h3 class="text-xl md:text-2xl font-semibold text-blue-300 mt-2 mb-3 text-center">Quick Consultations</h3>
+                    <div class="faq-section grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="faq-section">
                         <div class="faq-question" data-query="What is Income Tax Return filing?">
                             Income Tax Return Filing
                         </div>
@@ -335,12 +351,12 @@
             </div>
 
             <!-- Input Area -->
-            <div class="input-area-gradient p-6 shadow-lg">
+            <div class="input-area-gradient p-4 md:p-6 shadow-lg">
                 <form id="chat-form" class="flex items-center">
                     <div class="flex-1 relative">
                         <textarea 
                             id="user-input"
-                            class="w-full bg-gray-800 text-white rounded-full pl-6 pr-16 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                            class="w-full bg-gray-800 text-white rounded-full pl-4 pr-12 py-3 md:pl-6 md:pr-16 md:py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                             placeholder="Ask your question..."
                             rows="1"
                         ></textarea>
@@ -352,6 +368,48 @@
             </div>
         </div>
     </div>
+    <script type="module">
+        // Get DOM elements
+        const menuBtn = document.getElementById('menuBtn');
+        const menuDropdown = document.getElementById('menuDropdown');
+        const menuUserInfo = document.getElementById('menuUserInfo');
+        const menuLogoutBtn = document.getElementById('menuLogoutBtn');
+    
+        // Toggle dropdown menu visibility
+        menuBtn.addEventListener('click', () => {
+            menuDropdown.classList.toggle('hidden');
+        });
+    
+        // Hide menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuBtn.contains(event.target) && !menuDropdown.contains(event.target)) {
+                menuDropdown.classList.add('hidden');
+            }
+        });
+    
+        // Set user info inside menu dropdown
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                menuUserInfo.innerHTML = `
+                    <img src="${user.photoURL || 'default-avatar.png'}" 
+                         alt="User Avatar" 
+                         class="w-6 h-6 rounded-full inline-block mr-2">
+                    ${user.displayName || user.email}
+                `;
+            }
+        });
+    
+        // Logout functionality
+        menuLogoutBtn.addEventListener('click', () => {
+            signOut(auth).then(() => {
+                window.location.href = 'login.html';
+            }).catch((error) => {
+                console.error('Logout error:', error);
+                alert('Failed to log out. Please try again.');
+            });
+        });
+    </script>
+    
     <script>
         feather.replace();
         AOS.init()
@@ -838,6 +896,67 @@
         
         // Initialize the chat
         initializeChatHistory();
+            
+
+
+    </script>
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { 
+            getAuth, 
+            onAuthStateChanged, 
+            signOut 
+        } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCabfhnLkCueVgVQJswGHjf6Ss79-7AEf0",
+            authDomain: "taio-2209.firebaseapp.com",
+            databaseURL: "https://taio-2209.firebaseio.com",
+            projectId: "taio-2209",
+            storageBucket: "taio-2209.appspot.com",
+            messagingSenderId: "854095992752",
+            appId: "1:854095992752:web:04900a75a368a73f392875"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Get DOM elements
+        const logoutBtn = document.getElementById('logoutBtn');
+        const userInfo = document.getElementById('userInfo');
+    
+        // Check authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                userInfo.innerHTML = `
+                    <span class="mr-4">
+                        <img src="${user.photoURL || 'default-avatar.png'}" 
+                             alt="User Avatar" 
+                             class="w-8 h-8 rounded-full inline-block mr-2">
+                        ${user.displayName || user.email}
+                    </span>
+                `;
+            } else {
+                // No user is signed in, redirect to login
+                window.location.href = 'login.html';
+            }
+        });
+    
+        // Logout functionality
+        logoutBtn.addEventListener('click', () => {
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                window.location.href = 'login.html';
+            }).catch((error) => {
+                // An error happened.
+                console.error('Logout error:', error);
+                alert('Failed to log out. Please try again.');
+            });
+        });
     </script>
 </body>
 </html>
