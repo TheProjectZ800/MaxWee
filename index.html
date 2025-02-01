@@ -34,6 +34,7 @@
             100% { transform: translateY(0px); }
         }
         .nav-item {
+            white-space: nowrap; /* Prevent text wrapping */
             transition: all 0.3s ease;
         }
         .nav-item:hover {
@@ -115,7 +116,16 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0); }
         }
-
+        /* Mobile Header Fix */
+        .header-logo {
+            flex-shrink: 0;
+        }
+        .user-info {
+            max-width: 10ch; /* Ensure user info truncation */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
 
         /* Custom chatbot scrollbar styling */
         
@@ -188,76 +198,103 @@
         .avatar-section {
             animation: float 6s ease-in-out infinite;
         }
+        button, a {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-gray-100 font-inter overflow-x-hidden">
 
-    <!-- Header Section -->
+<!-- Header Section -->
     <header class="bg-white shadow-md fixed w-full z-10">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo & Branding -->
             <div class="flex items-center">
-                <img src="data:image/png;base64,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" alt="AIChatPal Logo" class="h-8 w-8 mr-2">
+                <img src="data:image/png;base64,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" alt="Conso Logo" class="h-8 w-8 mr-2">
                 <span class="font-bold text-xl text-gray-800">Conso</span>
                 <span class="text-sm text-gray-600 ml-2">Your Virtual Consultant, Powered by AI!</span>
+            </div>
 
-            </div>
+            <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-6">
-                <a href="#" class="text-gray-700 hover:text-blue-600 transition">Home</a>
-                <a href="how-it-works.html" class="text-gray-700 hover:text-blue-600 transition">How It Works</a>
-                <a href="#services" class="text-gray-700 hover:text-blue-600 transition">Services</a>
-                <a href="avatar.html" class="text-gray-700 hover:text-blue-600 transition">Meet Our Avatar</a>
-                <a href="blog.html" class="text-gray-700 hover:text-blue-600 transition">Blog</a>
-                <a href="#pricing" class="text-gray-700 hover:text-blue-600 transition">Pricing</a>
-                <a href="about.html" class="text-gray-700 hover:text-blue-600 transition">About Us</a>
-                
+                <a href="#" class="nav-item">Home</a>
+                <a href="how-it-works.html" class="nav-item">How It Works</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="avatar.html" class="nav-item">Meet Our Avatar</a>
+                <a href="blog.html" class="nav-item">Blog</a>
+                <a href="#pricing" class="nav-item">Pricing</a>
+                <a href="about.html" class="nav-item">About Us</a>
             </div>
-            <a href="cta.html" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Start AI Consultation</a>
-                    <div id="userInfo" class="text-gray-700 "></div>
-                    <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition duration-300">
-                        <i class="fas fa-sign-out-alt"></i>Logout
-                    </button>
-      
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-gray-800 text-2xl"></i>
+            </button>
+
+            <!-- CTA Buttons (Always Visible) -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="cta.html" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Start AI Consultation</a>
+                <div id="userInfo" class="bg-indigo-500 text-gray-100 px-4 py-2 rounded-lg hover:bg-indigo-300"></div>
+                <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
         </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-white shadow-lg z-50 md:hidden flex flex-col items-center justify-center space-y-6">
+            <button id="close-menu" class="absolute top-4 right-4 text-gray-600 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <nav class="flex flex-col items-center space-y-6 text-lg">
+                <a href="#" class="text-gray-800">Home</a>
+                <a href="how-it-works.html" class="text-gray-800">How It Works</a>
+                <a href="#services" class="text-gray-800">Services</a>
+                <a href="avatar.html" class="text-gray-800">Meet Our Avatar</a>
+                <a href="blog.html" class="text-gray-800">Blog</a>
+                <a href="#pricing" class="text-gray-800">Pricing</a>
+                <a href="about.html" class="text-gray-800">About Us</a>
+            </nav>
+            <a href="cta.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Start AI Consultation</a>
+            <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
     </header>
+    
 
 <!-- Hero Section -->
-<section id="hero" class="bg-cover bg-center h-screen flex items-center relative overflow-hidden" 
+<section id="hero" class="h-screen flex flex-col-reverse md:flex-row items-center text-center md:text-left px-6 bg-cover bg-center"
     style="background-image: url('https://tribe-s3-production.imgix.net/osLKcY1tsZ5bdS2xU2R6P?w=2000&auto=compress,format&dl');">
     <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         <!-- Text Section -->
-        <div id="textSection" class="text-section transition-transform duration-700">
-            <h1 class="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
+        <div class="w-full md:w-1/2">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
                 AI-Powered Consulting Solutions
             </h1>
-            <p class="text-white mt-6 text-lg">
-                Discover the power of AI-driven insights and and avail Simplified Advisory at your fingertips.
+            <p class="text-white mt-4 text-base md:text-lg mb-4">
+                Discover the power of AI-driven insights and avail Simplified Advisory at your fingertips.
             </p>
-            <a href="#products" class="mt-8 inline-block bg-white text-blue-600 font-bold px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition">
+            <a href="#products" class="mt-6 font-bold bg-white text-blue-600 px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition">
                 Why Choose Conso?
             </a>
         </div>
 
         <!-- Avatar Section with Interactive Elements -->
-        <div id="avatarSection" class="relative flex flex-col items-center md:items-end p-8">
-
-
+        <div id="avatarSection" class="relative flex flex-col items-center md:items-end p-6 md:p-8">
             <!-- Avatar Container with Glow Effect -->
-            <div class="relative group">
+            <div class="relative group w-32 sm:w-48 md:w-64">
                 <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
                 <div class="relative">
-                    <img src="AI_Consultant_01.jpg"
-                        alt="Animated AI Avatar" 
-                        class="rounded-full shadow-lg w-90 h-80 transform transition-transform duration-500 hover:scale-105">
+                    <img src="AI_Consultant_01.jpg" alt="AI Avatar" 
+                        class="rounded-full shadow-lg w-full transform transition-transform duration-500 hover:scale-105">
                 </div>
             </div>
 
-            <!-- Interactive Button -->
-            <div class="mt-6 text-center"
-                data-aos="fade-up"
-                data-aos-delay="300"
-                data-aos-duration="1000">
+            <div class="mt-6 sm:mt-6 text-center" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
                 <a href="avatar.html" 
-                class="group relative inline-flex items-center px-8 py-6 text-2xl font-semibold text-white bg-purple-600 rounded-full overflow-hidden transition-all duration-300 ease-in-out hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+                class="group relative inline-flex items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 text-lg sm:text-xl md:text-2xl font-semibold text-white bg-purple-600 rounded-full overflow-hidden transition-all duration-300 ease-in-out hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
                     <span class="absolute left-0 w-full h-0 transition-all bg-pink-600 opacity-100 group-hover:h-full top-0 duration-300 ease-out"></span>
                     <span class="relative flex items-center">
                         <i class="fas fa-portal-enter mr-2"></i>
@@ -265,9 +302,8 @@
                         <i class="fas fa-chevron-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
                     </span>
                 </a>
-                <p class="mt-3 text-sm text-gray-600 italic"
-                data-aos="fade-up"
-                data-aos-delay="500">
+                <p class="mt-3 text-sm sm:text-base text-gray-600 italic"
+                    data-aos="fade-up" data-aos-delay="500">
                     <i class="fas fa-sparkles mr-1"></i>
                     Where Expertise Meets Digital - Your Virtual CA Awaits!
                 </p>
@@ -334,7 +370,7 @@
                 We offer a range of AI-powered solutions to meet your unique needs.
             </p>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div 
                     data-aos="zoom-in"
                     data-aos-duration="1000"
@@ -396,7 +432,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal-animation">Our AI Product Suite</h2>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <!-- AI Avatar Product -->
                 <div class="product-card transform transition hover:scale-105 hover:shadow-2xl" data-aos="fade-up">
                     <div class="bg-blue-50 p-6 rounded-lg shadow-lg text-center">
@@ -412,7 +448,6 @@
                         </button>
                     </div>
                 </div>
-                
                 <!-- Conso AI Consultant -->
                 <div class="product-card transform transition hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="400">
                     <div class="bg-purple-50 p-6 rounded-lg shadow-lg text-center">
@@ -424,12 +459,12 @@
                             AI-powered consultant for accounting, taxation, and legal matters.
                         </p>
                         <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
-                            <a href="ConsoAI.html">Launch!</a>
+                            <a href="MainChat2.html">Launch!</a>
                         </button>
                     </div>
                 </div>
 
-               <!-- Drafting AI Consultant -->
+                <!-- Drafting AI Consultant -->
                 <div class="product-card transform transition hover:scale-105 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="bg-green-50 p-6 rounded-lg shadow-lg text-center">
                         <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
@@ -440,7 +475,7 @@
                             Advanced AI tool for automated document creation and drafting.
                         </p>
                         <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
-                            <a href="https://bhowmickkpatidar.github.io/ABCD/">Launch!</a>
+                            <a href="#">Launch!</a>
                         </button>
                     </div>
                 </div>
@@ -454,7 +489,7 @@
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">
                 Why Choose Conso?
             </h2>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div class="text-center" data-aos="fade-up">
                     <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
                         <i data-feather="shield" class="w-8 h-8 text-blue-600"></i>
@@ -626,6 +661,7 @@
                 <a href="#" class="text-blue-600 hover:underline">Explore →</a>
             </div>
         </div>
+        
     </div>
 </section>
 <!-- Latest Insights Section -->
@@ -992,6 +1028,12 @@
 
     <script src="script.js"></script>
     <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.remove('hidden');
+        });
+        document.getElementById('close-menu').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
         document.addEventListener('DOMContentLoaded', () => {
             // Render Feather icons
             feather.replace();
