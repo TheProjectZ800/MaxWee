@@ -1,0 +1,177 @@
+Revised Tax Rates for NEW TAX REGIME
+(w.e.f. 01/04/2025, FY 2025-26)
+
+Income Slabs (in rupees)	Tax Rates for FY 2025-26
+Upto 4 lakh rupees	Nil
+4-8 lakh rupees	5%
+8-12 lakh rupees	10%
+12-16 lakh rupees	15%
+16-20 lakh rupees	20%
+20-24 lakh rupees	25%
+Above 24 lakh rupees	30%
+
+Previously For FY 2024-25 tax slabs were:
+Income Slab	Tax Rate for FY 2024-25
+Up to Rs. 3,00,000	NIL
+Rs. 3,00,001 - Rs. 7,00,000	5%
+Rs. 7,00,001 - Rs. 10,00,000	10%
+Rs. 10,00,001 - Rs. 12,00,000	15%
+Rs. 12,00,001 - Rs. 15,00,000	20%
+Above Rs. 15,00,000	30%
+
+For FY 2025-26,
+Under the new tax regime, taxpayers with a total income of up to ₹12 lakh effectively pay zero tax due to a combination of slab rate reductions and rebates. This means that after applying the rebate, their net tax liability becomes nil. However, for incomes above ₹12 lakh, partial benefits exist, but tax is still payable.
+Limit of Rebate u/s 87A increased to ₹60,000/- from ₹25,000/- (available if Total Taxable Income is upto ₹12,00,000/-)
+
+TDS Threshold Rationalization (w.e.f. 01/04/2025, FY 2025-26)
+Section	Description	Current Threshold	Revised Threshold
+193	Interest on securities	Nil	₹10,000/-
+194A	Interest other than
+Interest on securities	  ₹50,000/- for Senior Citizen
+  ₹40,000/- for Others
+(when payers are Banks, Co-Op Society, Post Office)
+  ₹5,000/- for others	  ₹1,00,000/- for Senior Citizen
+  ₹50,000/- for Others
+(when payers are Banks, Co-Op Society, Post Office)
+  ₹10,000/- for others
+194	Dividend for an Individual
+shareholder	₹5,000/-	₹10,000/-
+194K	Income in respect of units of a
+mutual fund or
+specified company or undertaking	₹5,000/-	₹10,000/-
+194B/BB	Winnings	₹10,000/- per financial
+year	₹10,000/- per transaction
+194D	Insurance commission	₹15,000/-	₹20,000/-
+194G	Commission on Lottery Tickets	₹15,000/-	₹20,000/-
+194H	Commission on Brokerage	₹15,000/-	₹20,000/-
+194I	Rent	₹2,40,000 per financial
+year	₹50,000 per month
+194J	Fees for
+Professional and Technical Services	₹30,000/-	₹50,000/-
+194LA	Enhanced Compensation	₹2,50,000/-	₹5,00,000/-
+
+TDS Rate Change (w.e.f. 01/04/2025, FY 2025-26)
+
+Section	Description	Current TDS Rate	Revised TDS Rate
+194D	Insurance commission	5%	2%
+194LBC	Income from Securitization Trust	25% / 30%	10%
+
+TCS Rate Change (w.e.f. 01/04/2025, FY 2025-26)
+Section	Description	Current TCS Rate	Revised TCS Rate
+206C(1)	Sale of Timber or Forest Produce	2.5%	2.0%
+206C(1H)	Sale of Goods above ₹50 Lakhs	0.1%	0.0%
+(Section not
+applicable w.e.f. 01/04/2025)
+
+Assessment and Penalties
+
+Old Provisions	New Provisions
+A tax assessment stops during a search, can only start if cancelled.	Tax Assessment can be conducted during a search and vice versa.
+The Time limit for retaining seized
+documents was 30 days from the date of the assessment, reassessment, or
+recomputation order.	The time limit for retaining seized documents is now standardized to one month from the quarter-end of assessment.
+The time limits for imposing penalties varied based on the type of appeal or case, such as the end of the financial year or six months after the appellate order was received.	The time limit for imposing penalties is now standardized to six months from the quarter-end of the related case or appeal decision for better tracking and efficiency.
+The annual value was nil only for
+properties that were self-occupied by the owner.	The annual value to be considered nil
+for any property where the owner
+occupies it for residence or is unable to occupy it for any reason.
+
+Amendment in Updated Return u/s 139(8A)
+
+Extension of Time Limit	Updated return can now be filed within 48 months from the end of the relevant assessment year (previously 24 months).
+Additional Income Tax	  60% of tax and interest if filed after 24 months but within 36 months.
+  70% of tax and interest if filed after 36 months but within 48 months.
+Restriction on Filing	No updated return if a notice under Section 148A is issued after 36 months from the end of the assessment year,
+unless the order under Section 148A(3) determines no further notice is needed.
+Effective Date	The changes will apply from April 1, 2025.
+
+Other Points
+
+Old Provisions	New Provisions
+Period of validity of registration for
+charitable trusts is 5 Years	Period of validity of registration for
+charitable trusts is 10 Years
+Earlier Securities held by FII was not a Capital Asset	Now Securities held by FII is a Capital Asset
+Companies incorporated between 01/04/2016 – 01/04/2025 were allowed to register themselves as startups.	Companies incorporated between 01/04/2016 – 01/04/2030 were allowed to register themselves as startups.
+Earlier Definition of Undisclosed income did not include the term “Virtual Digital Assets”	Now Definition of Undisclosed income now includes the term “Virtual Digital Assets”
+Carry forward of Losses for Fresh 8 years in case of amalgamation	No carry forward of losses for FRESH 8 years from amalgamation. Old period to be considered.
+ALP determined for the year, applicable to that particular year only.	The ALP determined for the original year will be used for the next two years.
+Higher TDS/TCS rates for non-filers of income tax returns.	No such provisions.
+
+GST 
+Updated Summary of Amendments in GST 
+
+Definition Updates (Section 2)
+🔹 New Definition Introduced – "Unique Identification Marking" (UIM)
+
+This refers to a digital stamp, mark, or any other secure, non-removable marking to track specified goods
+.
+Time of Supply Rules (Sections 12 & 13)
+🔹 Removal of Sub-section (4) in both Sections
+
+Earlier, sub-section (4) mandated the date of receipt of payment as a determining factor for time of supply for continuous services.
+This removal simplifies tax computation and compliance, ensuring uniformity
+.
+Input Tax Credit (ITC) Amendments (Section 17)
+🔹 Clarification on ITC Eligibility for "Plant & Machinery"
+
+The term "plant or machinery" has been replaced with "plant and machinery", ensuring broader applicability of ITC.
+This amendment is retrospective from July 1, 2017, overriding past interpretations
+.
+Input Service Distributor (ISD) Rules (Section 20)
+🔹 Expanded Scope of ISD Distribution
+
+ISD provisions now cover IGST liabilities, ensuring businesses can better allocate input tax credits across different branches
+.
+Credit Notes & Output Tax Liability (Section 34)
+🔹 Restriction on Credit Notes for Tax Reduction
+
+Suppliers cannot reduce their output tax liability unless the recipient reverses ITC on such credit notes.
+This prevents artificial tax reductions and improves compliance
+.
+GST Return Filing Adjustments (Sections 38 & 39)
+🔹 Streamlining GST Return Statements
+
+"Auto-generated statement" is now simplified to "statement", removing system-specific dependency.
+Section 39 allows rectification of GST returns for a longer period, reducing compliance burdens
+.
+Appeals & Pre-Deposit Requirements (Sections 107 & 112)
+🔹 Revised Appeal Pre-Deposit Rules
+
+Pre-deposit requirement for filing GST appeals increased, ensuring only serious disputes escalate
+.
+New Penal Provisions (Sections 122B & 148A)
+🔹 New Section 122B – Penalty for Unregistered Suppliers
+
+Strict penalties on unregistered persons supplying taxable goods/services without proper GST compliance.
+E-commerce and digital transactions will now face stricter scrutiny
+.
+🔹 New Section 148A – Track & Trace Mechanism for Goods
+
+Mandatory affixation of Unique Identification Marking (UIM) for specified goods to curb tax evasion.
+Non-compliance will attract penalties under Section 122B
+.
+Amendment to Schedule III (Retrospective from July 1, 2017)
+🔹 Tax Treatment of SEZ & FTWZ Supplies
+
+Supply of goods warehoused in a Special Economic Zone (SEZ) or Free Trade Warehousing Zone (FTWZ) before clearance for exports or domestic sale shall not be treated as a supply of goods or services.
+This ensures no GST liability arises at this stage
+.
+🔹 Clarifications in Explanation 2 & New Explanation 3
+
+Explanation 2 has been modified to explicitly apply only to clause (a) of paragraph 8.
+Explanation 3 has been added to define key terms:
+✔ "Special Economic Zone"
+✔ "Free Trade Warehousing Zone"
+✔ "Domestic Tariff Area"
+.
+No Refund of Tax Collected on Certain Transactions (Section 129)
+🔹 No Refund for Past Tax Paid on SEZ & FTWZ Supplies
+
+If any tax was collected and paid on such transactions before this clarification, refunds will not be allowed
+.
+Additional Update – Service Tax Exemption for Reinsurance
+🔹 Retrospective Exemption for Crop Insurance Reinsurance
+
+Reinsurance services under the Weather-Based Crop Insurance Scheme & Modified National Agricultural Insurance Scheme are exempt from service tax for the period April 1, 2011, to June 30, 2017
+
